@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carregar JSON</title>
+    <script>
+        // Função para carregar o arquivo JSON
+        function carregarJSON() {
+            var arquivo = "file:///C:/Users/kaiky/Downloads/Rom%20swi/nintendo_switch_roms.json";
+            
+            // Usando o Fetch API para carregar o arquivo JSON
+            fetch(arquivo)
+                .then(response => response.json()) // Converte a resposta em formato JSON
+                .then(data => {
+                    console.log(data); // Exibe o conteúdo do JSON no console (você pode manipular os dados aqui)
+                    document.getElementById("conteudo").textContent = JSON.stringify(data, null, 2); // Exibe os dados no HTML
+                })
+                .catch(error => console.error('Erro ao carregar o JSON:', error)); // Exibe qualquer erro
+        }
+    </script>
+</head>
+<body>
+    <h1>Exemplo de Carregamento de Arquivo JSON Local</h1>
+    <button onclick="carregarJSON()">Carregar JSON</button>
+    <pre id="conteudo"></pre> <!-- A área onde o JSON será exibido -->
+</body>
+</html>
